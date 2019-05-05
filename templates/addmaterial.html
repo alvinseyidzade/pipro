@@ -1,0 +1,267 @@
+{% load static custom_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from www.urbanui.com/hiliteui/template/demo/vertical-default-light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Apr 2019 23:29:58 GMT -->
+<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>HiliteUI Admin</title>
+		<!-- base:css -->
+		<link rel="stylesheet" href="{% static 'vendors/mdi/css/materialdesignicons.min.css'%}">
+		<link rel="stylesheet" href="{% static 'vendors/css/vendor.bundle.base.css'%}">
+		<link rel="stylesheet" href="{% static 'vendors/flag-icon-css/css/flag-icon.min.css'%}">
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- endinject -->
+		<!-- plugin css for this page -->
+		<!-- End plugin css for this page -->
+		<!-- inject:css -->
+		<link rel="stylesheet" href="{% static 'css/vertical-layout-light/style.css'%}">
+		<!-- endinject -->
+		<link rel="shortcut icon" href="{% static 'images/favicon.png'%}" />
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+	  $( function() {
+	    $( "#datepicker" ).datepicker();
+	    $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+	  } );
+	  </script><style>
+		#id_product_typeadd {
+		    margin-left: 200px;
+		    height: 41px;
+		    margin-bottom: 30px;
+		    border-radius: 8px;
+		    width: 268px;
+		    border-color: #e3e3e3;
+		    padding: 0px 0 0 29px;
+		}
+		#datepicker {
+	    height: 41px;
+	    margin-bottom: 30px;
+	    border-radius: 8px;
+	    width: 268px;
+	    border-color: #e3e3e3;
+	    padding: 0px 0 0 29px;
+	    border: 1px #e3e3e3 solid;
+	}
+</style>
+	</head>
+
+	<body>
+
+		<div class="container-scroller">
+			<!-- partial:partials/_navbar.html -->
+			<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-left navbar-brand-wrapper d-flex align-items-center justify-content-between">
+          <a class="navbar-brand brand-logo" href="index.html"><img src="http://www.urbanui.com/hiliteui/template/images/logo.svg" alt="logo"/></a>
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="http://www.urbanui.com/hiliteui/template/images/logo-mini.svg" alt="logo"/></a>
+          <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+
+      </nav>
+			<!-- partial -->
+			<div class="container-fluid page-body-wrapper">
+				<!-- partial:partials/_settings-panel.html -->
+
+        <div id="right-sidebar" class="settings-panel">
+          <i class="settings-close mdi mdi-close"></i>
+          <ul class="nav nav-tabs" id="setting-panel" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="setting-content">
+
+            <!-- To do section tab ends -->
+
+            <!-- chat tab ends -->
+          </div>
+        </div>
+	      <!-- partial -->
+	      <!-- partial:../../partials/_sidebar.html -->
+				<nav class="sidebar sidebar-offcanvas" id="sidebar">
+				<ul class="nav">
+					<li class="nav-item nav-profile">
+						<div class="nav-link d-flex">
+							<div class="profile-image">
+								<img src="{% static 'images/faces/face28.png'%}" alt="image">
+							</div>
+							<div class="profile-name">
+								<p class="name">
+									{{ request.user.first_name }}   {{ request.user.last_name }}
+								</p>
+								<p class="designation">
+								<a href="{% url 'user'%}" > Edit</a>
+								</p>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'dashboard'%}">
+						<i class="fa fa-truck">&nbsp;&nbsp;</i>
+						<span class="menu-title"> &nbsp; Warehouse</span>
+						</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'add'%}">
+						<i class="fa fa-plus">&nbsp;&nbsp;</i>
+						<span class="menu-title">&nbsp;Add To Materials</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'out'%}">
+						<i class="fa fa-minus">&nbsp;&nbsp;</i>
+						<span class="menu-title">&nbsp;Out To Materials</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'user'%}">
+						<i class="fa fa-user">&nbsp;&nbsp;</i>
+						<span class="menu-title">&nbsp;User information</span>
+						</a>
+					</li>
+
+				</ul>
+			</nav>
+	          <!-- partial -->
+						<div class="main-panel">
+		        <div class="content-wrapper">
+		          <div class="row grid-margin">
+		            <div class="col-12">
+
+									<form method="post">
+										{% csrf_token %}
+		              <div class="card">
+		                <div class="card-body">
+		                  <h4 class="card-title">Add To Material</h4>
+											{{ form.as_p }}
+		                  <div class="form-group row">
+		                    <div class="col-lg-3">
+		                      <label class="col-form-label">Input Quality</label>
+		                    </div>
+		                    <div class="col-lg-8">
+		                      <input class="form-control" name="input_quality" maxlength="20" name="defaultconfig-2" id="defaultconfig-2" type="text" placeholder="Type Something..">
+		                    </div>
+		                  </div>
+		                  <div class="form-group row">
+		                    <div class="col-lg-3">
+		                      <label class="col-form-label">Unit</label>
+		                    </div>
+		                    <div class="col-lg-8">
+		                      <input type="number" class="form-control" name="unit" maxlength="10" name="defaultconfig-3" id="defaultconfig-3" type="text" placeholder="Type Something..">
+		                    </div>
+		                  </div>
+											<div class="form-group row">
+		                    <div class="col-lg-3">
+		                      <label class="col-form-label">Date</label>
+		                    </div>
+		                    <div class="col-lg-8">
+		                      <input type="text" name="date" id="datepicker">
+		                    </div>
+		                  </div>
+		                  <div class="form-group row">
+		                    <div class="col-lg-3">
+		                      <label class="col-form-label">Comment</label>
+		                    </div>
+		                    <div class="col-lg-8">
+		                      <input type="text" name="comment" class="form-control">
+		                    </div>
+		                  </div>
+											<input class="btn btn-primary" type="submit" value="Submit">
+		                </div>
+		              </div>
+								</form>
+		            </div>
+		          </div>
+
+
+
+		        </div>
+						<div class="content-wrapper">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">Added Materials</h4>
+									<div class="row">
+										<div class="col-12">
+											<div class="table-responsive">
+												<table id="order-listing" class="table">
+													<thead>
+														<tr>
+																<th>Product Type #</th>
+																	<th>Unit</th>
+
+
+																<th>Actions</th>
+														</tr>
+													</thead>
+													<tbody>
+
+														{% for producttype in producttypes %}
+															{% if producttype.addmaterial.count > 0 %}
+															<tr>
+																	<td>{{producttype.type}}</td>
+																	<td>{{ producttype.id|unitsum }}</td>
+
+
+																	
+																	<td>
+																		<button class="btn btn-outline-primary">View</button>
+																	</td>
+															</tr>
+
+
+															{% endif %}
+														{% endfor %}
+
+														{% for material in addmaterials.all %}
+
+													{% endfor %}
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+		        <!-- content-wrapper ends -->
+		        <!-- partial:../../partials/_footer.html -->
+		        <div class="footer-wrapper">
+		            <footer class="footer">
+		              <div class="d-sm-flex justify-content-center justify-content-sm-between">
+		                <span class="text-center text-sm-left d-block d-sm-inline-block">Copyright &copy; 2019. All rights reserved. </span>
+		                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Designed by: <a href="https://www.urbanui.com/" target="_blank">UrbanUI</a>. </span>
+		              </div>
+		            </footer>
+		          </div>
+		        <!-- partial -->
+		      </div>
+	      <!-- main-panel ends -->
+	    </div>
+	    <!-- page-body-wrapper ends -->
+	  </div>
+	  <!-- container-scroller -->
+	  <!-- base:js -->
+
+		<!-- container-scroller -->
+		<!-- base:js -->
+
+
+
+  <!-- endinject -->
+  <!-- plugin js for this page -->
+
+		<!-- End custom js for this page-->
+	</body>
+
+<!-- Mirrored from www.urbanui.com/hiliteui/template/demo/vertical-default-light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Apr 2019 23:30:54 GMT -->
+</html>
