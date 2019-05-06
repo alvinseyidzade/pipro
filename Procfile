@@ -1,1 +1,1 @@
-web: gunicorn pipro.wsgi
+web: gunicorn orxanadmin.wsgi

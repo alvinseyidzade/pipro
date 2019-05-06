@@ -1,4 +1,4 @@
-{% load static custom_tags %}
+{% load static  %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,10 +96,9 @@
 							</div>
 							<div class="profile-name">
 								<p class="name">
-									{{ request.user.first_name }}   {{ request.user.last_name }}
 								</p>
 								<p class="designation">
-								<a href="{% url 'user'%}" > Edit</a>
+								<a href="#" > Edit</a>
 								</p>
 							</div>
 						</div>
@@ -117,13 +116,13 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{% url 'out'%}">
+						<a class="nav-link" href="#">
 						<i class="fa fa-minus">&nbsp;&nbsp;</i>
 						<span class="menu-title">&nbsp;Out To Materials</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{% url 'user'%}">
+						<a class="nav-link" href="#">
 						<i class="fa fa-user">&nbsp;&nbsp;</i>
 						<span class="menu-title">&nbsp;User information</span>
 						</a>
@@ -141,41 +140,82 @@
 										{% csrf_token %}
 		              <div class="card">
 		                <div class="card-body">
-		                  <h4 class="card-title">Add To Material</h4>
+		                  <h4 class="card-title">Əlavə Et</h4>
 											{{ form.as_p }}
 		                  <div class="form-group row">
 		                    <div class="col-lg-3">
-		                      <label class="col-form-label">Input Quality</label>
+		                      <label class="col-form-label">Yaşadığı Region</label>
 		                    </div>
 		                    <div class="col-lg-8">
-		                      <input class="form-control" name="input_quality" maxlength="20" name="defaultconfig-2" id="defaultconfig-2" type="text" placeholder="Type Something..">
+		                      <input class="form-control" name="yasadigi_region" maxlength="20" id="defaultconfig-2" type="text" placeholder=".......">
 		                    </div>
 		                  </div>
 		                  <div class="form-group row">
 		                    <div class="col-lg-3">
-		                      <label class="col-form-label">Unit</label>
+		                      <label class="col-form-label">Əsas Fəaliyyət Profili</label>
 		                    </div>
 		                    <div class="col-lg-8">
-		                      <input type="number" class="form-control" name="unit" maxlength="10" name="defaultconfig-3" id="defaultconfig-3" type="text" placeholder="Type Something..">
+		                      <input type="text" class="form-control" name="profili" maxlength="10"  id="defaultconfig-3" type="text" placeholder=".......">
 		                    </div>
 		                  </div>
+
 											<div class="form-group row">
-		                    <div class="col-lg-3">
-		                      <label class="col-form-label">Date</label>
-		                    </div>
-		                    <div class="col-lg-8">
-		                      <input type="text" name="date" id="datepicker">
-		                    </div>
-		                  </div>
+ 											 <div class="col-lg-3">
+ 												 <label class="col-form-label">Əlaqə Nömrəsi</label>
+ 											 </div>
+ 											 <div class="col-lg-8">
+ 												 <input type="text" class="form-control" name="elaqenomresi" maxlength="10"  id="defaultconfig-3" type="text" placeholder=".......">
+ 											 </div>
+ 										 </div>
+
+
+
+										 <div class="form-group row">
+												<div class="col-lg-3">
+													<label class="col-form-label">Şəkil</label>
+												</div>
+												<div class="col-lg-8">
+													<input type="file" class="form-control" name="elaqenomresi" maxlength="10"  id="defaultconfig-3" type="text" placeholder=".......">
+												</div>
+											</div>
+
+											<div class="form-group row">
+ 												<div class="col-lg-3">
+ 													<label class="col-form-label">Problemlər</label>
+ 												</div>
+ 												<div class="col-lg-8">
+ 													<input type="text" class="form-control" name="problemler" maxlength="10"  id="defaultconfig-3" type="text" placeholder=".......">
+ 												</div>
+ 											</div>
+
+											<div class="form-group row">
+ 												<div class="col-lg-3">
+ 													<label class="col-form-label">Vəziyyət Şablonu</label>
+ 												</div>
+ 												<div class="col-lg-8">
+ 													<input type="text" class="form-control" name="elaqenomresi" maxlength="10"  id="defaultconfig-3" type="text" placeholder=".......">
+ 												</div>
+ 											</div>
+
+											<div class="form-group row">
+ 												<div class="col-lg-3">
+ 													<label class="col-form-label">Şəhər </label>
+ 												</div>
+ 												<div class="col-lg-8">
+ 													<input type="text" class="form-control" name="elaqenomresi" maxlength="10"  id="defaultconfig-3" type="text" placeholder=".......">
+ 												</div>
+ 											</div>
+
+
 		                  <div class="form-group row">
 		                    <div class="col-lg-3">
-		                      <label class="col-form-label">Comment</label>
+		                      <label class="col-form-label">Kənd</label>
 		                    </div>
 		                    <div class="col-lg-8">
 		                      <input type="text" name="comment" class="form-control">
 		                    </div>
 		                  </div>
-											<input class="btn btn-primary" type="submit" value="Submit">
+											<input class="btn btn-primary" type="submit" value="Əlavə Et">
 		                </div>
 		              </div>
 								</form>
@@ -204,26 +244,7 @@
 													</thead>
 													<tbody>
 
-														{% for producttype in producttypes %}
-															{% if producttype.addmaterial.count > 0 %}
-															<tr>
-																	<td>{{producttype.type}}</td>
-																	<td>{{ producttype.id|unitsum }}</td>
 
-
-																	
-																	<td>
-																		<button class="btn btn-outline-primary">View</button>
-																	</td>
-															</tr>
-
-
-															{% endif %}
-														{% endfor %}
-
-														{% for material in addmaterials.all %}
-
-													{% endfor %}
 													</tbody>
 												</table>
 											</div>
