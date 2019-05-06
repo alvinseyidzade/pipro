@@ -26,7 +26,7 @@ SECRET_KEY = '8p(*^6n#i%vy&nmoa+s(m853u5wfnk33$-ht9i(opinar#h9i$'
 DEBUG = True
 
 ALLOWED_HOSTS = ['pipro.herokuapp.com']
-
+ 
 
 # Application definition
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dashboard'
 ]
 
 MIDDLEWARE = [
@@ -47,7 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
 ]
 
 ROOT_URLCONF = 'pipro.urls'
