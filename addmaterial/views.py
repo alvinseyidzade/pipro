@@ -21,7 +21,8 @@ def addmaterial(request):
             model_instance.profili = request.POST.get("profili")
             model_instance.elaqenomresi = request.POST.get("elaqenomresi")
             model_instance.problemler = request.POST.get("problemler")
-            model_instance.veziyyetsablonu = request.POST.get("veziyyetsablonu")
+            
+            model_instance.veziyyetsablonu = request.POST.get("status")
             model_instance.seher = request.POST.get("seher")
             model_instance.kend = request.POST.get("kend")
             model_instance.save()
