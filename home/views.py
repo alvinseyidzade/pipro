@@ -25,6 +25,38 @@ def dashboard(request):
             model_instance.save()
             data = Data.objects.all()
 
+            return render(request, 'baza.html', {'data': data})
+
+
+
+    else:
+
+        form = DataForm()
+    return render(request, "baza.html", {'data': data})
+
+
+
+
+
+
+
+def dashboard2(request):
+    data = Data.objects.all()
+
+
+    if request.method == 'POST':
+        form = DataForm(request.POST)
+        if form.is_valid():
+
+            model_instance = form.save(commit=False)
+            model_instance.ad_soyad = request.POST.get("input_quality")
+            model_instance.unit = request.POST.get("unit")
+            model_instance.date = request.POST.get("date")
+            model_instance.comment = request.POST.get("comment")
+            model_instance.user = request.user
+            model_instance.save()
+            data = Data.objects.all()
+
             return render(request, 'index.html', {'data': data})
 
 
