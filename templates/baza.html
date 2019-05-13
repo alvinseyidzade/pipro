@@ -59,7 +59,7 @@
 
 
 <div class="sidebar-header">
-<img src="{% static 'assets/img/logo_white.png'%}" alt="logo" class="brand" data-src="{% static 'assets/img/logo_white.png'%}" data-src-retina="{% static 'assets/img/logo_white_2x.png'%}" width="78" height="22">
+
 <div class="sidebar-header-controls">
 <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20" data-pages-toggle="#appMenu"><i class="fa fa-angle-down fs-16"></i>
 </button>
@@ -104,7 +104,7 @@
 
 <div class="">
 <div class="brand inline   ">
-<img src="{% static 'assets/img/logo.png'%}" alt="logo" data-src="{% static 'assets/img/logo.png'%}" data-src-retina="{% static 'assets/img/logo_2x.png'%}" width="78" height="22">
+<img src="{% static 'assets/img/logo.png'%}" alt="logo" data-src="{% static 'assets/img/logo.png'%}" data-src-retina="{% static 'logo.png'%}" style=" height: 49px; width: auto; ">
 </div>
 
 <ul class="d-lg-inline-block d-none notification-list no-margin d-lg-inline-block b-grey b-l b-r no-style p-l-30 p-r-20">
@@ -249,7 +249,7 @@ Commented on john Smiths wall.
 <a href="#" class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>
 <a href="#" class="dropdown-item"><i class="pg-outdent"></i> Feedback</a>
 <a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>
-<a href="#" class="clearfix bg-master-lighter dropdown-item">
+<a href="{% url 'logout'%}" class="clearfix bg-master-lighter dropdown-item">
 <span class="pull-left">Logout</span>
 <span class="pull-right"><i class="pg-power"></i></span>
 </a>
@@ -295,11 +295,8 @@ Commented on john Smiths wall.
 <thead>
 <tr>
 
-<th style="width:1%" class="text-center">
-<button class="btn btn-link"><i class="pg-trash"></i>
-</button>
-</th>
-<th style="width:20%">İd</th>
+
+<th style="width:10%">İd</th>
 <th style="width:20%">Ad Soyad</th>
 <th style="width:29%">Yaşadığı Region</th>
 <th style="width:15%">Şəhər/Rayon</th>
@@ -315,12 +312,7 @@ Commented on john Smiths wall.
 
   {% for dat in data.all %}
 <tr>
-<td class="v-align-middle">
-<div class="checkbox text-center">
-<input type="checkbox" value="3" id="checkbox1">
-<label for="checkbox1" class="no-padding no-margin"></label>
-</div>
-</td>
+
 <td class="v-align-middle ">
 <p>{{dat.id}}</p>
 </td>
@@ -1437,7 +1429,7 @@ Yea
 
 <div class="container-fluid">
 
-<img class="overlay-brand" src="{% static 'assets/img/logo.png'%}" alt="logo" data-src="{% static 'assets/img/logo.png'%}" data-src-retina="{% static 'assets/img/logo_2x.png'%}" width="78" height="22">
+<img class="overlay-brand" src="{% static 'assets/img/logo.png'%}" alt="logo" data-src="{% static 'assets/img/logo.png'%}" data-src-retina="{% static 'logo.png'%}" style=" height: 49px; width: auto; ">
 
 
 <a href="#" class="close-icon-light overlay-close text-black fs-16">
