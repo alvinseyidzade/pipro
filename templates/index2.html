@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from www.urbanui.com/hiliteui/template/demo/vertical-default-light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Apr 2019 23:29:58 GMT -->
+<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>HiliteUI Admin</title>
+		<!-- base:css -->
+		<link rel="stylesheet" href="{% static 'vendors/mdi/css/materialdesignicons.min.css'%}">
+		<link rel="stylesheet" href="{% static 'vendors/css/vendor.bundle.base.css'%}">
+		<link rel="stylesheet" href="{% static 'vendors/flag-icon-css/css/flag-icon.min.css'%}">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- endinject -->
+		<!-- plugin css for this page -->
+		<!-- End plugin css for this page -->
+		<!-- inject:css -->
+		<link rel="stylesheet" href="{% static 'css/vertical-layout-light/style.css'%}">
+		<!-- endinject -->
+		<link rel="shortcut icon" href="{% static 'images/favicon.png'%}" />
+	</head>
+	<body>
+		<div class="container-scroller">
+			<!-- partial:partials/_navbar.html -->
+			<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-left navbar-brand-wrapper d-flex align-items-center justify-content-between">
+          <a class="navbar-brand brand-logo" href="index.html"><img src="http://www.urbanui.com/hiliteui/template/images/logo.svg" alt="logo"/></a>
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="http://www.urbanui.com/hiliteui/template/images/logo-mini.svg" alt="logo"/></a>
+          <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+
+      </nav>
+			<!-- partial -->
+			<div class="container-fluid page-body-wrapper">
+				<!-- partial:partials/_settings-panel.html -->
+
+        <div id="right-sidebar" class="settings-panel">
+          <i class="settings-close mdi mdi-close"></i>
+          <ul class="nav nav-tabs" id="setting-panel" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="setting-content">
+
+            <!-- To do section tab ends -->
+
+            <!-- chat tab ends -->
+          </div>
+        </div>
+        <!-- partial -->
+				<!-- partial:partials/_sidebar.html -->
+				<nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item nav-profile">
+            <div class="nav-link d-flex">
+              <div class="profile-image">
+                <img src="{% static 'images/faces/face28.png'%}" alt="image">
+              </div>
+              <div class="profile-name">
+                <p class="name">
+                </p>
+                <p class="designation">
+                <a href="#" > Edit</a>
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'dashboard'%}">
+            <i class="fa fa-ok">&nbsp;&nbsp;</i>
+            <span class="menu-title"> &nbsp; Əsas Səhifə</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'add'%}">
+            <i class="fa fa-plus">&nbsp;&nbsp;</i>
+            <span class="menu-title">&nbsp;Əlavə Et</span>
+            </a>
+          </li>
+
+
+        </ul>
+      </nav>
+				<!-- partial -->
+
+			  <div class="main-panel">
+
+
+
+					<div class="content-wrapper">
+	          <div class="card">
+	            <div class="card-body">
+	              <h4 class="card-title">Fermerlərin Məlumat Bazası</h4>
+	              <div class="row">
+	                <div class="col-12">
+	                  <div class="table-responsive">
+	                    <table id="order-listing" class="table">
+	                      <thead>
+	                        <tr>
+	                            <th>İd #</th>
+	                            <th>Ad Soyad</th>
+	                            <th>Yaşadığı Region</th>
+															 <th>Şəhər/Rayon</th>
+															  <th>Kənd</th>
+	                            <th>Təsərrüfat əsas fəaliyyət profili</th>
+	                            <th>Əlaqə nömrəsi</th>
+	                            <th>Şəkil</th>
+															<th>Problemlər</th>
+	                            <th>Vəziyyət Şablonu</th>
+
+	                        </tr>
+	                      </thead>
+	                      <tbody>{% for dat in data.all %}
+	                        <tr>
+	                            <td>{{dat.id}}</td>
+	                            <td>{{dat.ad_soyad}}</td>
+	                            <td>{{dat.yasadigi_region}}</td>
+															 <th>{{dat.seher}}</th>
+															  <th>{{dat.kend}}</th>
+	                            <td>{{dat.profili}}</td>
+	                            <td>{{dat.elaqenomresi}}</td>
+	                            <td><img src="#"/></td>
+	                      
+	                            <td>
+	                              <button class="btn btn-outline-primary">{{dat.veziyyetsablonu}}</button>
+	                            </td>
+															<td>
+	                              <label class="badge badge-info">{{dat.problemler}}</label>
+	                            </td>
+	                        </tr>
+	                       {% endfor %}
+
+	                      </tbody>
+	                    </table>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <div class="footer-wrapper">
+            <footer class="footer">
+              <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-center text-sm-left d-block d-sm-inline-block">Copyright &copy; 2019. All rights reserved. </span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Designed by: <a href="https://www.pipro.az/" target="_blank">Pi Pro MMC</a>. </span>
+              </div>
+            </footer>
+          </div>
+        <!-- partial -->
+      </div>
+			<!-- page-body-wrapper ends -->
+			</div>
+		</div>
+		<!-- container-scroller -->
+		<!-- base:js -->
+		<script src="{% static 'vendors/js/vendor.bundle.base.js'%}"></script>
+		<!-- endinject -->
+		<!-- Plugin js for this page-->
+		<script src="{% static 'vendors/progressbar.js/progressbar.min.js'%}"></script>
+		<script src="{% static 'vendors/flot/jquery.flot.js'%}"></script>
+		<script src="{% static 'vendors/flot/jquery.flot.resize.js'%}"></script>
+		<script src="{% static 'vendors/flot/curvedLines.js'%}"></script>
+		<script src="{% static 'vendors/chart.js/Chart.min.js'%}"></script>
+		<!-- End plugin js for this page-->
+		<!-- inject:js -->
+		<script src="{% static 'js/off-canvas.js'%}"></script>
+		<script src="{% static 'js/hoverable-collapse.js'%}"></script>
+		<script src="{% static 'js/template.js'%}"></script>
+		<script src="{% static 'js/settings.js'%}"></script>
+		<script src="{% static 'js/todolist.js'%}"></script>
+		<!-- endinject -->
+		<!-- Custom js for this page-->
+		<script src="{% static 'js/dashboard.js'%}"></script>
+		<!-- End custom js for this page-->
+	</body>
+
+<!-- Mirrored from www.urbanui.com/hiliteui/template/demo/vertical-default-light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Apr 2019 23:30:54 GMT -->
+</html>
