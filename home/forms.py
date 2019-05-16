@@ -5,4 +5,4 @@ class DataForm(forms.ModelForm):
 
     class Meta:
         model = Data
-        fields = ['ad_soyad']
+        fields = ['image']

@@ -51,8 +51,8 @@ def add(request):
 
 
 
-    if request.method == 'POST':
-        form = DataForm(request.POST)
+    if request.method == 'POST' and request.FILES['image']:
+        form = DataForm(request.POST, request.FILES)
         if form.is_valid():
 
             model_instance = form.save(commit=False)
