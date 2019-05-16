@@ -240,12 +240,12 @@ Commented on john Smiths wall.
 <div class="d-flex align-items-center">
 
 <div class="pull-left p-r-10 fs-14 font-heading d-lg-block d-none">
-<span class="semi-bold">David</span> <span class="text-master">Nest</span>
+<span class="semi-bold">{{request.user.first_name}}</span> <span class="text-master">{{request.user.last_name}}</span>
 </div>
 <div class="dropdown pull-right d-lg-block d-none">
 <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 <span class="thumbnail-wrapper d32 circular inline">
-<img src="{% static 'assets/img/profiles/avatar.jpg'%}" alt="" data-src="{% static 'assets/img/profiles/avatar.jpg'%}" data-src-retina="{% static 'assets/img/profiles/avatar_small2x.jpg'%}" width="32" height="32">
+<img src="{% static 'images/faces/face28.png'%}" alt="" data-src="{% static 'images/faces/face28.png'%}" data-src-retina="{% static 'images/faces/face28.png'%}" width="32" height="32">
 </span>
 </button>
 <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
