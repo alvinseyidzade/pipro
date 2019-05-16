@@ -45,7 +45,7 @@ def addmaterial(request):
 
 
 
-
+@login_required(login_url='/login/')
 def add(request):
     data = Data.objects.all()
 

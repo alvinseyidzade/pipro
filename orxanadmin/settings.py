@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'storages',
 
 ]
 
@@ -79,8 +80,12 @@ WSGI_APPLICATION = 'orxanadmin.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd3ca6e1j7u17tf',
+        'USER': 'isufyshovpwmjn',
+        'PASSWORD': '400bfb08766eeb0bfc231b7222a55fe6f2bc3e55622b2e90372a49f1740b6fed',
+        'HOST': 'ec2-54-228-252-67.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -126,7 +131,13 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+AWS_STORAGE_BUCKET_NAME = 'bucketeer-c47ddfdb-607d-4f4d-9dc0-611f64e0f2ad'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+MEDIA_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+MEDIA_ROOT = ''
+AWS_ACCESS_KEY_ID = "AKIAVZH4SBSYWS4E6JG6"
+AWS_SECRET_ACCESS_KEY = "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"
+
+
 LOGOUT_REDIRECT_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'

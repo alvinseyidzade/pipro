@@ -39,7 +39,7 @@ def dashboard(request):
 
 
 
-
+@login_required(login_url='/login/')
 def dashboard2(request):
     data = Data.objects.all()
 
