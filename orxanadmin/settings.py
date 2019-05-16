@@ -27,7 +27,7 @@ SECRET_KEY = 'i=@s=zbeqgp0h*1@y^*z^88&vuedj%e^r7krg&dj$&pt)1&p=4'
 DEBUG = True
 
 ALLOWED_HOSTS = ['pipro.herokuapp.com']
-
+#'pipro.herokuapp.com'
 
 # Application definition
 
@@ -131,12 +131,11 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
-AWS_STORAGE_BUCKET_NAME = 'bucketeer-c47ddfdb-607d-4f4d-9dc0-611f64e0f2ad'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-MEDIA_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
-MEDIA_ROOT = ''
-AWS_ACCESS_KEY_ID = "AKIAVZH4SBSYWS4E6JG6"
-AWS_SECRET_ACCESS_KEY = "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"
+
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 LOGOUT_REDIRECT_URL = 'login'
