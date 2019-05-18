@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_views.dashboard, name='home'),
     path('baza2/', home_views.dashboard2, name='dashboard2'),
+    path('baza/<int:id>', home_views.post_update, name='update'),
     path('addmaterial/', add_views.addmaterial, name='addmaterial'),
     path('add/', add_views.add, name='add'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
