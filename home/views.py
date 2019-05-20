@@ -86,6 +86,10 @@ def change_password(request):
         args = {'form': form}
         return render(request, 'changepassword.html', args)
 
+def handle_uploaded_file(f):
+    with open('some/file/name.txt', 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
 
 @login_required(login_url='/login/')
 def post_update(request, id):
@@ -95,6 +99,7 @@ def post_update(request, id):
     if request.method == 'POST' and request.FILES['image']:
 
         if form.is_valid():
+            handle_uploaded_file(request.FILES['image'])
             model_instance = form.save(commit=False)
             model_instance.ad_soyad = request.POST.get("ad_soyad")
             model_instance.yasadigi_region = request.POST.get("yasadigi_region")
@@ -105,6 +110,7 @@ def post_update(request, id):
             model_instance.veziyyetsablonu = request.POST.get("status")
             model_instance.seher = request.POST.get("seher")
             model_instance.kend = request.POST.get("kend")
+            image = request.FILES.get('image', False)
             model_instance.save()
             return render(request, 'baza.html', {'data': data})
 
